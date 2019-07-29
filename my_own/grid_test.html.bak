@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+.header {
+  grid-area: header;
+  background-color: #f1f1f1;
+  padding: 30px;
+  text-align: center;
+}
+
+/* The grid container */
+.grid-container {
+  display: grid;
+  grid-template-areas: 
+    'header header header'
+    'left middle right' 
+    'footer footer footer';
+  grid-column-gap: 10px;
+} 
+
+.left,
+.middle,
+.right {
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Style the left column */
+.left {
+  grid-area: left;
+}
+
+/* Style the middle column */
+.middle {
+  grid-area: middle;
+}
+
+/* Style the right column */
+.right {
+  grid-area: right;
+}
+
+/* Style the footer */
+.footer {
+  grid-area: footer;
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .grid-container  {
+    grid-template-areas: 
+      'header header header'
+      'left left left' 
+      'middle middle middle' 
+      'right right right' 
+      'footer footer footer';
+  }
+}
+
+ul.nav-ul {
+  font-family: "Roboto"
+  list-style-type: none;
+  overflow: hidden;
+  border:2px solid #3f3b3a;
+  border-radius:15px;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  grid-area: nav-ul;
+}
+
+li.nav-li {
+  font-family: "Roboto";
+  display: inline;
+  float: left;
+}
+      
+a.nav-a {
+  color: #3f3b3a;
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+}
+      
+a.nav-a:hover {
+  color: #ffffff;
+  display: block;
+  padding: 10px;
+  background-color: #111111;
+  text-decoration: none;
+}
+
+a {
+  font-family: "Roboto";
+}
+
+a.nav-a-active {
+  color: #ffffff;
+  display: block;
+  padding: 10px;
+  background-color: #4CAF50;
+  text-decoration: none;
+}
+      
+a.nav-a-about {
+  color: #4CAF50;
+  display: block;
+  padding: 10px;
+  background-color: #3f3a3b;
+  text-decoration: none;
+}
+      
+a.nav-a-about:hover {
+  color: #4CAF50;
+  display: block;
+  padding: 10px;
+  background-color: #111;
+}
+</style> </head>
+  <body>
+    <div class="grid-container">
+      <div class="header">
+        <h2>AInventory</h2>
+        <nav>
+          <ul class="nav-ul">
+            <li class="nav-li"><a class="nav-a-active" href="/">Home</a></li>
+            <li class="nav-li"><a class="nav-a" href="/pc">PC</a></li>
+            <li class="nav-li"><a class="nav-a" href="/printers">Printers</a></li>
+            <li class="nav-li" style="float:right"><a class="nav-a-about" href="/about">About</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="left" style="background-color:#aaa;">Column</div>
+      <div class="middle" style="background-color:#bbb;">Column</div>
+      <div class="right" style="background-color:#ccc;">Column</div>
+      <div class="footer">
+        <p>Footer</p>
+      </div>
+    </div>
+  </body>
+</html>

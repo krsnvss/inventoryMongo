@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/violet-orange.css">
+    <title>AInventory - Error</title>
+</head>
+  <body>
+    <button onclick="topFunction()" id="onTopBtn" title="Go to top"><i class="fa fa-arrow-up"></i></button>
+    <script type="text/javascript" src="/assets/js/onTopBtn.js"></script>
+    <div class="grid-container">
+      <div class="header">
+        <h1 style="text-align:left;color:#2d3142;"><a style="text-decoration:none;color:#2d3142"
+
+            href="/"><span style="color: #ef8354;">A</span>Inventory</a></h1>
+      </div>
+      <div class="navpanel">
+        <nav>
+          <ul class="nav-ul">
+            <li class="nav-li"><a class="nav-a" href="/">Главная</a></li>
+            <li class="nav-li"><a class="nav-a" href="/pc/all">ПК</a></li>
+            <li class="nav-li"><a class="nav-a" href="/device/all">Оргтехника</a></li>
+            <li class="nav-li"><a class="nav-a" href="/device/network/all">Сетевые устройства</a></li>
+            <li class="nav-li" style="float:right">
+              <form class="search" action="/"> <input placeholder="Серийный номер"
+
+                  name="search" type="text"> <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="subheader">
+        <h2 class="cardheader">Ошибка!</h2>
+        <p style="text-align: center; background-color: #F36C60;padding:2%;width:60%;margin:auto; border-radius:7px">{{.error}}</p>
+        <br>
+      </div>
+      </div>
+        <div class="footer">
+          <p>© Copyright 2019 krsnvss@gmail.com - All Rights Reserved</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/violet-orange.css">
+    <title>AInventory - Network Devices</title>
+</head>
+  <body>
+    <button onclick="topFunction()" id="onTopBtn" title="Go to top"><i class="fa fa-arrow-up"></i></button>
+    <script type="text/javascript" src="/assets/js/onTopBtn.js"></script>
+    <div class="grid-container">
+      <div class="header">
+        <h1 style="text-align:left;color:#2d3142;"><a style="text-decoration:none;color:#2d3142"
+
+            href="/"><span style="color: #ef8354;">A</span>Inventory</a></h1>
+      </div>
+      <div class="navpanel">
+        <nav>
+          <ul class="nav-ul">
+            <li class="nav-li"><a class="nav-a" href="/">Главная</a></li>
+            <li class="nav-li"><a class="nav-a" href="/pc/all">ПК</a></li>
+            <li class="nav-li"><a class="nav-a" href="/device/all">Оргтехника</a></li>
+            <li class="nav-li"><a class="nav-a-active" href="/device/network/all">Сетевое оборудование</a></li>
+            <li class="nav-li" style="float:right">
+              <form class="search" action="/"> <input placeholder="Серийный номер"
+
+                  name="search" type="text"> <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="subheader">
+        <h2 class="cardheader">Список устройств</h2>
+      </div>
+      <div class="devlist">
+        <input type="text" id="pcTableSearch" onkeyup="tableSearch()" placeholder="Search by name...">
+        <table id="pctable">
+          <tbody>
+            <tr>
+              <th onclick="sortTable(0)">Производитель</th>
+              <th onclick="sortTable(1)">Модель</th>
+              <th onclick="sortTable(2)">Серийный номер</th>
+              <th onclick="sortTable(3)">IP-адрес</th>
+              <th onclick="sortTable(4)">Имя устройства</th>
+            </tr>
+            {{range .devices}}
+            <tr>
+              <td><a href="/?search={{.SerialNumber}}" style="color:#2d3142;text-decoration: none">{{.Manufacturer}}</a></td>
+              <td>{{.Model}}</td>
+              <td>{{.SerialNumber}}</td>
+              <td>{{.IP}}</td>
+              <td>{{.Name}}</td>
+            </tr>
+            {{end}}
+        </table>
+        <script type="text/javascript" src="/assets/js/pcTable.js"></script>
+        <br>
+      </div>
+        <div class="footer">
+          <p>© Copyright 2019 krsnvss@gmail.com - All Rights Reserved</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

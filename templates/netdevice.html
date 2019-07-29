@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/violet-orange.css">
+    <title>AInventory - {{.Model}}</title>
+</head>
+  <body>
+    <div class="grid-container">
+      <div class="header">
+        <h1 style="text-align:left;color:#2d3142;"><a style="text-decoration:none;color:#2d3142" href="/"><span style="color: #ef8354;">A</span>Inventory</a></h1>
+      </div>
+      <div class="navpanel">
+        <nav>
+          <ul class="nav-ul">
+            <li class="nav-li"><a class="nav-a" href="/">Главная</a></li>
+            <li class="nav-li"><a class="nav-a" href="/pc/all">ПК</a></li>
+            <li class="nav-li"><a class="nav-a" href="/device/all">Оргтехника</a></li>
+            <li class="nav-li"><a class="nav-a-active" href="/device/network/all">Сетевые устройства</a></li>
+            <li class="nav-li" style="float:right">
+              <form class="search" action="/"> <input placeholder="Серийный номер"
+
+                  name="search" type="text"> <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="subheader">
+        <h2 class="cardheader">{{.Model}}</h2>
+      </div>
+      <div class="left"><img src="/assets/images/3rdparty/{{.Manufacturer}}.png" alt="cpu logo" title="cpu" class="cardimg">
+        <h3 class="cardheader">Производитель</h3>
+        <p class="cardp">{{.Manufacturer}}</p>
+      </div>
+      <div class="middle"> <img src="/assets/images/531901-512.png" alt="ram logo" title="cpu" class="cardimg">
+        <h3 class="cardheader">Модель</h3>
+        <p class="cardp">{{.Model}}</p>
+      </div>
+      <div class="right"> <img src="/assets/images/1287518-512.png" alt="rom logo" title="cpu" class="cardimg">
+        <h3 class="cardheader">MAC</h3>
+        <p class="cardp">{{.MAC}}</p>
+      </div>
+      <div class="devlist">
+
+        <div class="accordion-div"> <button class="accordion-btn">Параметры сети</button> </div>
+        <div class="panel" style="display: block;">
+          <p class="devdescription" style="line-height: 1.5;"><strong>IP-адрес:</strong> {{.IP}}<br>
+            <strong>Имя устройства:</strong> {{.Name}} <br>
+            <strong>Серийный номер:</strong> {{.SerialNumber}} <br>
+            <strong>Последнее обновление информации:</strong> {{.Dt}} <br>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Другие параметры</button> </div>
+        <div class="panel">
+          <p class="devdescription"><strong>Версия прошивки:</strong> {{.Firmware}}<br>
+            <strong>MAC:</strong> {{.MAC}} <br>
+            <strong>IP-адрес:</strong> {{.IP}} <br>
+            <strong>Время работы:</strong> {{.Uptime}} <br>
+        </div>
+
+        <script type="text/javascript" src="/assets/js/accordion.js"></script>
+        
+      </div>
+      <div class="footer">
+          <p>© Copyright 2019 krsnvss@gmail.com - All Rights Reserved</p>
+      </div>
+    </div>
+    
+  </body>
+</html>

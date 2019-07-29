@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>pc</title>
+    <style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+.header {
+  grid-area: header;
+  background-color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  color:#2d3142;
+}
+      
+/* Style for navpanel */
+.navpanel{
+  grid-area: navpanel;
+}
+
+/* Style for subheader*/
+.subheader{
+  grid-area: subheader
+}
+      
+/*Style for devlist*/
+.devlist {
+  grid-area:devlist
+}
+      
+/* The grid container */
+.grid-container {
+  display: grid;
+  grid-template-areas: 
+    'header header header'
+    'navpanel navpanel navpanel'
+    'subheader subheader subheader'
+    'left middle right' 
+    'devlist devlist devlist'
+    'footer footer footer';
+} 
+
+.left,
+.middle,
+.right {
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
+  height:95%;
+  background-color:#bfc0c0;
+  padding: 10px;
+  box-shadow: 1px 1px 5px #4f5d75;
+}
+
+/* Style the left column */
+.left {
+  grid-area: left;
+}
+      
+.left:hover{
+  box-shadow: 1px 1px 5px #2d3142;
+}
+
+/* Style the middle column */
+.middle {
+  grid-area: middle;
+}
+
+.middle:hover{
+  box-shadow: 1px 1px 5px #2d3142;
+}
+      
+/* Style the right column */
+.right {
+  grid-area: right;
+}
+
+.right:hover{
+  box-shadow: 1px 1px 5px #2d3142;
+}
+      
+/* Style the footer */
+.footer {
+  color:#ffffff;
+  grid-area: footer;
+  border-radius:7px;
+  background-color:#4f5d75;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 480px) {
+  .grid-container  {
+    grid-template-areas: 
+      'header header header'
+      'navpanel navpanel navpanel'
+      'subheader subheader subheader'
+      'left left left' 
+      'middle middle middle' 
+      'right right right' 
+      'devlist devlist devlist'
+      'footer footer footer';
+  }
+}
+
+.nav-ul {
+  list-style-type: none;
+  overflow: hidden;
+  border-radius:7px;
+  background-color:#4f5d75;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+}
+
+li.nav-li {
+  display: inline;
+  float: left;
+}
+      
+a.nav-a {
+  color: #ffffff;
+  display: block;
+  padding: 18px;
+  text-decoration: none;
+}
+      
+a.nav-a:hover {
+  color: #ffffff;
+  display: block;
+  padding: 18px;
+  background-color: #2d3142;
+  text-decoration: none;
+}
+
+a.nav-a-active {
+  color: #2d3142;
+  display: block;
+  padding: 18px;
+  background-color: #ef8354;
+  text-decoration: none;
+}
+      
+a.nav-a-about {
+  color: #ffffff;
+  display: block;
+  padding: 18px;
+  text-decoration: none;
+}
+      
+a.nav-a-about:hover {
+  color: #ffffff;
+  display: block;
+  padding: 18px;
+  background-color: #2d3142;
+}
+      
+img.cardimg{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px #4f5d75;
+}
+      
+.cardheader, .cardp, .devsubheader{
+  color:#2d3142;
+  text-align: center;
+  word-wrap: break-word;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.devsubheader {
+  color:#2d3142;
+}
+      
+.devdescription {
+  color:#2d3142;
+  background-color:#ffffff;
+  padding:10px;
+  width:90%;
+  margin-left: auto;
+  margin-right: auto;
+  word-wrap: break-word;
+}
+
+.accordion-btn {
+  background-color: #bfc0c0;
+  color: #2d3142;
+  cursor: pointer;
+  padding: 18px;
+  text-align: center;
+  border: 2px solid #ffffff;
+  border-radius:7px;
+  outline: none;
+  transition: 0.4s; 
+  width:102%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size:large;
+  font-weight: bold;
+}
+.accordion-div {
+  background-color: #bfc0c0;
+  color: #2d3142;
+  width:70%; 
+  margin:auto;
+  border-radius:7px;
+}
+
+.accordion-btn:hover{
+  background-color:#4f5d75;
+  color: #ffffff;
+  border: 2px solid #ef8354;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  word-wrap: break-word;
+  width:70%;
+  margin-left: auto;
+  margin-right: auto;
+}      
+</style> </head>
+  <body>
+    <div class="grid-container">
+      <div class="header">
+        <h1 style="text-align:left;color:#2d3142;"><span style="color: #ef8354;">A</span>Inventory</h1>
+      </div>
+      <div class="navpanel">
+        <nav>
+          <ul class="nav-ul">
+            <li class="nav-li"><a class="nav-a-active" href="/">Home</a></li>
+            <li class="nav-li"><a class="nav-a" href="/pc/all">PC</a></li>
+            <li class="nav-li"><a class="nav-a" href="/printers">Printers</a></li>
+            <li class="nav-li" style="float:right"><a class="nav-a-about" href="/about">About</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="subheader">
+        <h2 class="cardheader">{{.computersystem.Name}}</h2>
+      </div>
+      <div class="left"> <img src="assets/images/531885-512.jpg" alt="cpu logo"
+
+          title="cpu" class="cardimg">
+        <h3 class="cardheader"> CPU </h3>
+        <p class="cardp">{{range .cpu}} <br>
+          {{.Name}} <br>
+          {{end}}</p>
+      </div>
+      <div class="middle"> <img src="assets/images/531884-512.jpg" alt="ram logo"
+
+          title="cpu" class="cardimg">
+        <h3 class="cardheader">RAM</h3>
+        <p class="cardp">{{.computersystem.TotalPhysicalMemory}} Байт</p>
+      </div>
+      <div class="right"> <img src="assets/images/531912-512.jpg" alt="rom logo"
+
+          title="cpu" class="cardimg">
+        <h3 class="cardheader">ROM</h3>
+        <p class="cardp">{{range .diskdrive}} <br>
+          {{.Model}} <br>
+          {{.Size}} Байт <br>
+          {{end}}</p>
+      </div>
+      <div class="devlist">
+        <div class="accordion-div"> <button class="accordion-btn">Сведения о
+            системе</button> </div>
+        <div class="panel">
+          <p class="devdescription"><strong>Имя ПК:</strong>
+            {{.computersystem.Name}} <br>
+            <strong>Модель:</strong> {{.computersystem.SystemFamily}} <br>
+            <strong>Модель SKU:</strong> {{.computersystem.SystemSKUNumber}} <br>
+            <strong>Подключен к домену:</strong> {{ .computersystem.Domain }} <br>
+            <strong>Пользователь:</strong> {{ .user }} <br>
+            <strong>Часовой пояс:</strong> {{ .tz.Caption }} <br>
+            <strong>Последнее обновление информации:</strong> {{ .dt }}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Материнская
+            плата</button> </div>
+        <div class="panel">
+          <p class="devdescription"><strong>Производитель:</strong>
+            {{.baseboard.Manufacturer}} <br>
+            <strong>Модель:</strong> {{.baseboard.Product}} <br>
+            <strong>Серийный номер:</strong> {{.baseboard.SerialNumber }} <br>
+            <strong>Версия:</strong> {{.baseboard.Version}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">BIOS</button>
+        </div>
+        <div class="panel">
+          <p class="devdescription"><strong>Производитель:</strong>
+            {{.bios.Manufacturer}} <br>
+            <strong>Модель:</strong> {{.bios.Name}} <br>
+            <strong>Серийный номер:</strong> {{.bios.SerialNumber}} <br>
+            <strong>Версия: </strong>{{.bios.Version}} <br>
+            <strong>Дата выпуска:</strong> {{.bios.ReleaseDate}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Центральный
+            процессор</button> </div>
+        <div class="panel">
+          <p class="devdescription">{{range .cpu}}<b>{{.Name}}</b> <br>
+            <strong>Максимальная частота:</strong> {{.MaxClockSpeed}} МГц <br>
+            <strong>Количество ядер:</strong> {{.NumberOfCores}} <br>
+            {{end}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Запоминающие
+            устройства</button> </div>
+        <div class="panel">
+          <p class="devdescription">{{range .diskdrive}}<b>{{.MediaType}}</b> <br>
+            <strong>Модель:</strong> {{.Model}} <br>
+            <strong>Объем:</strong> {{.Size}} Байт <br>
+            {{end}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Видеоадаптер</button>
+        </div>
+        <div class="panel">
+          <p class="devdescription">{{range .video}}<b>{{.Caption}}</b> <br>
+            <strong>Видеопроцессор:</strong> {{.VideoProcessor}} <br>
+            <strong>Разрешение:</strong>
+            {{.CurrentHorizontalResolution}}x{{.CurrentVerticalResolution}} <br>
+            <strong>Глубина цвета:</strong> {{.CurrentBitsPerPixel}} <br>
+            {{end}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Дисплей</button>
+        </div>
+        <div class="panel">
+          <p class="devdescription">{{range .display}}<b>{{.Name}}</b> <br>
+            <strong>Производитель:</strong> {{.MonitorManufacturer}} <br>
+            <strong>Тип дисплея:</strong> {{.MonitorType}} <br>
+            {{end}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Операционная
+            система</button> </div>
+        <div class="panel">
+          <p class="devdescription"><strong>Производитель:</strong>
+            {{.os.Manufacturer}} <br>
+            <strong>Версия:</strong> {{.os.Version}} <br>
+            <strong>Дата установки:</strong> {{.os.InstallDate}} <br>
+            <strong>Код страны:</strong> {{.os.CountryCode}} <br>
+            <strong>Язык ОС:</strong> {{.os.OSLanguage}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Клавиатура</button>
+        </div>
+        <div class="panel">
+          <p class="devdescription">{{ range .keyboard }}<b>{{.Name}}</b> <br>
+            <strong>Описание:</strong> {{.Description}} <br>
+            <strong>ID:</strong> {{.DeviceID}} <br>
+            {{end}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Мышь</button>
+        </div>
+        <div class="panel">
+          <p class="devdescription">{{ range .mouse }}<b>{{.Name}}</b> <br>
+            <strong>Описание:</strong> {{.Description}} <br>
+            <strong>ID:</strong> {{.DeviceID}} <br>
+            {{end}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Сетевые
+            адаптеры</button> </div>
+        <div class="panel">
+          <p class="devdescription">{{ range .nic }}<b>{{.Name}}</b> <br>
+            <strong>Тип адаптера:</strong> {{ .AdapterType }} <br>
+            <strong>Аппаратный адрес:</strong> {{ .MACAddress }} <br>
+            <strong>Производитель:</strong> {{ .Manufacturer }} <br>
+            <strong>Имя продукта:</strong> {{ .ProductName }} <br>
+            <strong>Скорость:</strong> {{ .Speed }} Бит/c <br>
+            {{end}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Подключенные
+            принтеры</button> </div>
+        <div class="panel">
+          <p class="devdescription">{{ range .printer }}<b>{{ .Caption}}</b> <br>
+            <strong>Драйвер:</strong> {{ .DriverName }} <br>
+            <strong>Порт:</strong> {{ .PortName }} <br>
+            {{end}}</p>
+        </div>
+        <script>
+            var acc = document.getElementsByClassName("accordion-div");
+            var i;
+            
+            for (i = 0; i < acc.length; i++) {
+              acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                  panel.style.display = "none";
+                } else {
+                  panel.style.display = "block";
+                }
+              });
+            }
+          </script>
+        <div class="footer">
+          <p>Footer</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

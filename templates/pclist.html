@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/violet-orange.css">
+    <title>AInventory - PC</title>
+</head>
+  <body>
+    <button onclick="topFunction()" id="onTopBtn" title="Go to top"><i class="fa fa-arrow-up"></i></button>
+    <script type="text/javascript" src="/assets/js/onTopBtn.js"></script>
+    <div class="grid-container">
+      <div class="header">
+        <h1 style="text-align:left;color:#2d3142;"><a style="text-decoration:none;color:#2d3142"
+
+            href="/"><span style="color: #ef8354;">A</span>Inventory</a></h1>
+      </div>
+      <div class="navpanel">
+        <nav>
+          <ul class="nav-ul">
+            <li class="nav-li"><a class="nav-a" href="/">Главная</a></li>
+            <li class="nav-li"><a class="nav-a-active" href="/pc/all">ПК</a></li>
+            <li class="nav-li"><a class="nav-a" href="/device/all">Оргтехника</a></li>
+            <li class="nav-li"><a class="nav-a" href="/device/network/all">Сетевое обоудование</a></li>
+            <li class="nav-li" style="float:right">
+              <form class="search" action="/"> <input placeholder="Серийный номер"
+
+                  name="search" type="text"> <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="subheader">
+        <h2 class="cardheader">Список устройств</h2>
+      </div>
+      <div class="devlist">
+        <input type="text" id="pcTableSearch" onkeyup="tableSearch()" placeholder="Поиск по имени">
+        <table id="pctable">
+          <tbody>
+            <tr>
+              <th onclick="sortTable(0)">Имя ПК</th>
+              <th onclick="sortTable(1)">Центральный процессор<br>(Модель/ Количество ядер)</th>
+              <th onclick="sortTable(2)">Оперативная память</th>
+              <th onclick="sortTable(4)">Производитель</th>
+              <th onclick="sortTable(4)">Модель</th>
+              <th onclick="sortTable(5)">ОС</th>
+              <th onclick="sortTable(5)">Дата выпуска</th>
+            </tr>
+            {{range .pc}}
+            <tr>
+              <td><a href="/?search={{.BaseBoard.SerialNumber}}" style="color:#2d3142;text-decoration: none">{{.ComputerSystem.Name}}</a></td>
+              <td>
+                {{range .CPU}}
+                {{.Name}}/ {{.NumberOfCores}}<br>{{end}}
+              </td>
+              <td>{{.ComputerSystem.TotalPhysicalMemory}}</td>
+              <td>{{.BaseBoard.Manufacturer}}</td>
+              <td>{{.BaseBoard.Product}}</td>
+              <td>{{.OS.Caption}}</td>
+              <td>{{.Bios.ReleaseDate}}</td>
+            </tr>
+            {{end}}
+        </table>
+        <script type="text/javascript" src="/assets/js/pcTable.js"></script>
+        <br>
+      </div>
+        <div class="footer">
+          <p>© Copyright 2019 krsnvss@gmail.com - All Rights Reserved</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

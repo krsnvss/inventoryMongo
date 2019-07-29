@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/violet-orange.css">
+    <title>AInventory</title>
+</head>
+  <body>
+    <div class="grid-container">
+      <div class="header">
+        <h1 style="text-align:left;color:#2d3142;"><a style="text-decoration:none;color:#2d3142"
+
+            href="/"><span style="color: #ef8354;">A</span>Inventory</a></h1>
+      </div>
+      <div class="navpanel">
+        <nav>
+          <ul class="nav-ul">
+            <li class="nav-li"><a class="nav-a-active" href="/">Главная</a></li>
+            <li class="nav-li"><a class="nav-a" href="/pc/all">ПК</a></li>
+            <li class="nav-li"><a class="nav-a" href="/device/all">Оргтехника</a></li>
+            <li class="nav-li"><a class="nav-a" href="/device/network/all">Сетевое оборудование</a></li>
+            <li class="nav-li" style="float:right">
+              <form class="search" action="/"> <input placeholder="Серийный номер"
+
+                  name="search" type="text"> <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="subheader">
+        <h2 class="cardheader">Всего устройств</h2>
+      </div>
+      <div class="left">
+        <a href="/pc/all"><img src="assets/images/1055084-512.png" alt="pc logo" title="pc" class="cardimg"></a>
+        <h3 class="cardheader">Персональные компьютеры</h3>
+        <p class="cardp">{{.cpu}}</p>
+      </div>
+      <div class="middle">
+        <a href="/device/all"><img src="assets/images/531905-512.png" alt="printer logo" title="printer" class="cardimg"></a>
+        <h3 class="cardheader">Оргтехника</h3>
+        <p class="cardp">{{.electronics}}</p>
+      </div>
+      <div class="right">
+        <a href="/device/network/all"><img src="assets/images/1287513-512.png" alt="lan logo" title="lan" class="cardimg"></a>
+        <h3 class="cardheader">Сетевое оборудование</h3>
+        <p class="cardp">{{.network}} </p>
+      </div>
+      <div class="devlist">
+        <div class="search-div" style="text-align:center; background-color:#fff">
+          <h2 class="cardheader">Добавить новое устройство</h2>
+          <form class="add" action="/device/add" method="POST"><br>
+            <br>
+            <div class="custom-select">
+              <select name="type">
+                <option value="0">Выберите тип устройства</option>
+                <option value="display">Монитор</option>
+                <option value="mfp">МФУ</option>
+                <option value="phone">Телефон</option>
+                <option value="printer">Принтер</option>
+              </select>
+            </div>
+            <script type="text/javascript" src="/assets/js/select.js"></script>
+            <br>
+            <input placeholder="Серийный номер" name="sn" type="text" required=""><br>
+            <br>
+            <input placeholder="Производитель" name="manufacturer" type="text" required=""><br>
+            <br>
+            <input placeholder="Модель" name="model" type="text" required=""><br>
+            <br>
+            <input placeholder="Пользователь" name="user" type="text" required=""><br>
+            <br>
+            <button type="submit"><i class="fa fa-save"></i><b> Добавить устройство</b></button>
+          </form>
+          <br>
+          <br>
+        </div>
+        <div class="footer">
+          <p>© Copyright 2019 krsnvss@gmail.com - All Rights Reserved</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

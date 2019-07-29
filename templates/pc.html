@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/violet-orange.css">
+    <title>AInventory - {{.computersystem.Name}}</title>
+</head>
+  <body>
+    <div class="grid-container">
+      <div class="header">
+        <h1 style="text-align:left;color:#2d3142;"><a style="text-decoration:none;color:#2d3142" href="/"><span style="color: #ef8354;">A</span>Inventory</a></h1>
+      </div>
+      <div class="navpanel">
+        <nav>
+          <ul class="nav-ul">
+            <li class="nav-li"><a class="nav-a" href="/">Главная</a></li>
+            <li class="nav-li"><a class="nav-a-active" href="/pc/all">ПК</a></li>
+            <li class="nav-li"><a class="nav-a" href="/device/all">Оргтехника</a></li>
+            <li class="nav-li"><a class="nav-a" href="/device/network/all">Сетевое оборудование</a></li>
+            <li class="nav-li" style="float:right">
+              <form class="search" action="/"> <input placeholder="Серийный номер"
+
+                  name="search" type="text"> <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="subheader">
+        <h2 class="cardheader">{{.computersystem.Name}}</h2>
+      </div>
+      <div class="left"><a href="#cpu"><img src="/assets/images/531885-512.png" alt="cpu logo" title="cpu" class="cardimg"></a>
+        <h3 class="cardheader">Центральный процессор</h3>
+        <p class="cardp">{{range .cpu}} <br>
+          {{.Name}} <br>
+          {{end}}</p>
+      </div>
+      <div class="middle"> <img src="/assets/images/531884-512.png" alt="ram logo" title="cpu" class="cardimg">
+        <h3 class="cardheader">Оперативная память</h3>
+        <p class="cardp">{{.computersystem.TotalPhysicalMemory}}ГБ</p>
+      </div>
+      <div class="right"> <img src="/assets/images/531912-512.png" alt="rom logo" title="cpu" class="cardimg">
+        <h3 class="cardheader">Запоминающие устройства</h3>
+        <p class="cardp">{{range .diskdrive}} <br>
+          {{.Model}} <br>
+          {{.Size}}ГБ <br>
+          {{end}}</p>
+      </div>
+      <div class="devlist">
+
+        <div class="accordion-div"> <button class="accordion-btn">Сведения о
+            системе</button> </div>
+        <div class="panel" style="display: block;">
+          <p class="devdescription"><strong>Имя ПК:</strong>
+            {{.computersystem.Name}} <br>
+            <strong>Модель:</strong> {{.computersystem.SystemFamily}} <br>
+            <strong>Модель SKU:</strong> {{.computersystem.SystemSKUNumber}} <br>
+            <strong>Подключен к домену:</strong> {{ .computersystem.Domain }} <br>
+            <strong>Пользователь:</strong> {{ .user }} <br>
+            <strong>Часовой пояс:</strong> {{ .tz.Caption }} <br>
+            <strong>Последнее обновление информации:</strong> {{ .dt }}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Материнская
+            плата</button> </div>
+        <div class="panel">
+          <p class="devdescription"><strong>Производитель:</strong>
+            {{.baseboard.Manufacturer}} <br>
+            <strong>Модель:</strong> {{.baseboard.Product}} <br>
+            <strong>Серийный номер:</strong> {{.baseboard.SerialNumber }} <br>
+            <strong>Версия:</strong> {{.baseboard.Version}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">BIOS</button>
+        </div>
+        <div class="panel">
+          <p class="devdescription"><strong>Производитель:</strong>
+            {{.bios.Manufacturer}} <br>
+            <strong>Модель:</strong> {{.bios.Name}} <br>
+            <strong>Серийный номер:</strong> {{.bios.SerialNumber}} <br>
+            <strong>Версия: </strong>{{.bios.Version}} <br>
+            <strong>Дата выпуска:</strong> {{.bios.ReleaseDate}}</p>
+        </div>
+        <div class="accordion-div" id="cpu"> <button class="accordion-btn">Центральный
+            процессор</button> </div>
+        <div class="panel">
+          <p class="devdescription">{{range .cpu}}<b>{{.Name}}</b> <br>
+            <strong>Максимальная частота:</strong> {{.MaxClockSpeed}} МГц <br>
+            <strong>Количество ядер:</strong> {{.NumberOfCores}} <br>
+            {{end}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Запоминающие
+            устройства</button> </div>
+        <div class="panel">
+          <p class="devdescription">{{range .diskdrive}}<b>{{.MediaType}}</b> <br>
+            <strong>Модель:</strong> {{.Model}} <br>
+            <strong>Объем:</strong> {{.Size}}ГБ <br>
+            {{end}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Видеоадаптер</button>
+        </div>
+        <div class="panel">
+          <p class="devdescription">{{range .video}}<b>{{.Caption}}</b> <br>
+            <strong>Видеопроцессор:</strong> {{.VideoProcessor}} <br>
+            <strong>Разрешение:</strong>
+            {{.CurrentHorizontalResolution}}x{{.CurrentVerticalResolution}} <br>
+            <strong>Глубина цвета:</strong> {{.CurrentBitsPerPixel}} <br>
+            {{end}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Дисплей</button>
+        </div>
+        <div class="panel">
+          <p class="devdescription">{{range .display}}<b>{{.Name}}</b> <br>
+            <strong>Производитель:</strong> {{.MonitorManufacturer}} <br>
+            <strong>Тип дисплея:</strong> {{.MonitorType}} <br>
+            {{end}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Операционная
+            система</button> </div>
+        <div class="panel">
+          <p class="devdescription"><strong>Производитель:</strong>
+            {{.os.Manufacturer}} <br>
+            <strong>Версия:</strong> {{.os.Version}} <br>
+            <strong>Дата установки:</strong> {{.os.InstallDate}} <br>
+            <strong>Код страны:</strong> {{.os.CountryCode}} <br>
+            <strong>Язык ОС:</strong> {{.os.OSLanguage}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Клавиатура</button>
+        </div>
+        <div class="panel">
+          <p class="devdescription">{{ range .keyboard }}<b>{{.Name}}</b> <br>
+            <strong>Описание:</strong> {{.Description}} <br>
+            <strong>ID:</strong> {{.DeviceID}} <br>
+            {{end}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Мышь</button>
+        </div>
+        <div class="panel">
+          <p class="devdescription">{{ range .mouse }}<b>{{.Name}}</b> <br>
+            <strong>Описание:</strong> {{.Description}} <br>
+            <strong>ID:</strong> {{.DeviceID}} <br>
+            {{end}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Сетевые
+            адаптеры</button> </div>
+        <div class="panel">
+          <p class="devdescription">{{ range .nic }}<b>{{.Name}}</b> <br>
+            <strong>Тип адаптера:</strong> {{ .AdapterType }} <br>
+            <strong>Аппаратный адрес:</strong> {{ .MACAddress }} <br>
+            <strong>Производитель:</strong> {{ .Manufacturer }} <br>
+            <strong>Имя продукта:</strong> {{ .ProductName }} <br>
+            <strong>Скорость:</strong> {{ .Speed }} Бит/c <br>
+            {{end}}</p>
+        </div>
+        <div class="accordion-div"> <button class="accordion-btn">Подключенные
+            принтеры</button> </div>
+        <div class="panel">
+          <p class="devdescription">{{ range .printer }}<b>{{ .Caption}}</b> <br>
+            <strong>Драйвер:</strong> {{ .DriverName }} <br>
+            <strong>Порт:</strong> {{ .PortName }} <br>
+            {{end}}</p>
+        </div>
+
+        <script>
+            var acc = document.getElementsByClassName("accordion-div");
+            var i;
+            
+            for (i = 0; i < acc.length; i++) {
+              acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                  panel.style.display = "none";
+                } else {
+                  panel.style.display = "block";
+                }
+              });
+            }
+          </script>
+
+        
+      </div>
+      <div class="footer">
+          <p>© Copyright 2019 krsnvss@gmail.com - All Rights Reserved</p>
+      </div>
+    </div>
+    
+  </body>
+</html>
